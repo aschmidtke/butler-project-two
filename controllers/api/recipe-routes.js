@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
             'title',
             'ingredients',
             'directions',
-            'user_id'
+            'user_id',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE recipe.id = vote.recipe_id)'), 'vote_count']
         ],
         include: [
@@ -65,7 +65,7 @@ router.get('/:id', (req, res) => {
             'title',
             'ingredients',
             'directions',
-            'user_id'
+            'user_id',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE recipe.id = vote.recipe_id)'), 'vote_count']
         ],
         include: [
