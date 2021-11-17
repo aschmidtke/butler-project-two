@@ -14,7 +14,7 @@ async function loginFormHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
-            document.location.replace('/'); // check with team to see where we want to send logged in users
+            document.location.replace('/dashboard'); // check with team to see where we want to send logged in users
         } else {
             alert(response.statusText);
         }

@@ -15,7 +15,7 @@ async function editRecipe(event) {
         headers: { 'Content-Type': 'application/json' }
     })
     if (response.ok) {
-        document.location.replace('/'); // check values
+        document.location.replace('/dashboard'); // check values
     } else {
         alert(response.statusText);
     }
