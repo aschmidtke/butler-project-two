@@ -8,7 +8,7 @@ async function deleteRecipe(event) {
         method: 'DELETE'
     });
     if (response.ok) {
-        document.location.replace('/'); // where do we want to send them?
+        document.location.replace('/dashboard'); // where do we want to send them?
     } else {
         alert(response.statusText);
     }

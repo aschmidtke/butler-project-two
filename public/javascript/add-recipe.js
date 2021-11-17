@@ -13,7 +13,7 @@ async function newRecipe(event) {
         headers: { 'Content-Type': 'application/json' }
     });
     if (response.ok) {
-        document.location.replace('/'); //check location
+        document.location.replace('/dashboard'); //check location
     } else {
         alert(response.statusText);
     }
