@@ -48,11 +48,17 @@ router.get('/', (req, res) => {
             }
         ]
     })
-        .then(recipeData => res.json(recipeData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .then(recipeData => {
+        const recipe = recipeData.map(recipe => recipe.get({ plain: true }));
+        res.render('homepage', { 
+          recipe,
+          loggedIn: req.session.loggedIn
+         });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
 });
 
 // gets a recipe by id
@@ -104,11 +110,21 @@ router.get('/post/:id', (req, res) => {
             }
         ]
     })
-        .then(recipeData => res.json(recipeData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
+    .then(recipeData => {
+        if (!recipeData) {
+          res.status(404).json({ message: 'No recipe found with this id' });
+          return;
+        }
+        const recipe = recipeData.get({ plain: true });
+        res.render('single-recipe', { 
+          recipe,
+          loggedIn: req.session.loggedIn 
         });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
 });
 
 // the login route for the user

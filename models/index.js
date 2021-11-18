@@ -4,11 +4,16 @@ const Vote = require('./Vote');
 const Comment = require('./Comment');
 const sequelize = require('../config/connection');
 
-User.belongsToMany(Recipe, {
-    through: Vote,
-    as: 'voted_recipes',
+// Need to figure out User/Recipe Associations
+// User.belongsToMany(Recipe, {
+//     through: Vote,
+//     as: 'voted_recipes',
+//     foreignKey: 'user_id'
+// });
+
+User.hasMany(Recipe, {
     foreignKey: 'user_id'
-});
+})
 
 User.hasMany(Vote, {
     foreignKey: 'user_id'
@@ -18,11 +23,12 @@ User.hasMany(Comment, {
     foreignKey: 'user_id'
 });
 
-Recipe.belongsToMany(User, {
-    through: Vote,
-    as: 'voted_recipes',
-    foreignKey: 'recipe_id'
-});
+// Need to figure out User/Recipe Associations
+// Recipe.belongsToMany(User, {
+//     through: Vote,
+//     as: 'voted_recipes',
+//     foreignKey: 'recipe_id'
+// });
 
 Recipe.hasMany(Vote, {
     foreignKey: 'recipe_id'
@@ -30,6 +36,10 @@ Recipe.hasMany(Vote, {
 
 Recipe.hasMany(Comment, {
     foreignKey: 'recipe_id'
+});
+
+Recipe.belongsTo(User, {
+    foreignKey: 'user_id'
 });
 
 Vote.belongsTo(User, {

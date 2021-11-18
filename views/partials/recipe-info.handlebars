@@ -1,0 +1,19 @@
+<article class="recipe">
+  <div class="">
+    <div class="title">
+      <a class="link" href="/recipe/{{id}}">{{title}}</a>
+    </div>
+    <div class="">
+      <a>{{ingredients}}</a>
+    </div>
+    <div class="">
+      <a>{{directions}}</a>
+    </div>
+    <div class="meta">
+      <div>
+        {{user.username}} on {{format_date created_at}}
+      </div>
+      <a href="/recipe/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+    </div>
+  </div>
+</article>

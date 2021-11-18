@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Recipe Rendezvous</title>
+</head>
 
-    <body>
+<body class="bg-yellow-100">
+    <header>
+        <div class="grid">
+            <div class="col-span-6 grid-cols-7"><img class="h-32 mt-6" src="/images/RRLogo-1.png" alt="Logo" /></div>
+            {{#if loggedIn}}
+            <div class="col-span-2"><a href="dashboard">Recipe Box</a></div>
+            <button id="logout">logout</button>
+            {{else}}
+            <div class="col-span-2"><a href="/login">Register</a></div>
+            <div class="col-span-2"><a href="/login">Login</a></div>
+            {{/if}}
+        </div>
+    </header>
+    <main>
+        {{{ body }}}
+    </main>
+    <div class="grid px-52 py-12">
+        <div><img class="justify-items-center mt-6 rounded-lg shadow-xl" src="img/cooking-together.png"
+                alt="Cooking Together" /></div>
+    </div>
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
+</body>
 
-    </body>
-    
 </html>
