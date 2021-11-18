@@ -1,8 +1,30 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
-class Recipe extends Model { }
-// needs voting 
+class Recipe extends Model { 
+    static upvote(body, models) {
+        return models.Vote.create({
+            user_id: body.user_id,
+            recipe_id: body.recipe_id
+        }).then(() => {
+            return Recipe.findOne({
+                where: {
+                    id: body.recipe_id
+                },
+                attributes: [
+                    'id',
+                    'recipe_url',
+                    'title',
+                    'created_at',
+                    [
+                        sequelize.literal('(SELECT COUNT(*) FROM vote where recipe.id = vote.recipe.id)'),
+                        'vote_count'
+                    ]
+                ]
+            })
+        })
+    }
+}
 
 Recipe.init({
     id: {
