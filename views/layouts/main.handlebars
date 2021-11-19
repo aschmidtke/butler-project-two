@@ -9,24 +9,27 @@
 </head>
 
 <body class="bg-yellow-100 text-center">
-    <header>
-        <div class="grid">
-            <div class="col-span-6 grid-cols-7  flex-1 justify-self-center"><img class="h-32 mt-6" src="/images/RRLogo-1.png" alt="Logo" /></div>
-            {{#if loggedIn}}
-            <div class="col-span-2 col-start-2"><a href="/dashboard">Recipe Box</a></div>
-            <button id="logout">Logout</button>
-            {{else}}
-            <div class="col-span-2 col-start-2"><a href="/login">Register</a></div>
-            <div class="col-span-2"><a href="/login">Login</a></div>
-            {{/if}}
+    <div class="container mx-auto">
+        <header>
+            <div class="grid">
+                <div class="col-span-6 grid-cols-7  flex-1 justify-self-center"><img class="h-32 mt-6"
+                        src="/images/RRLogo-1.png" alt="Logo" /></div>
+                {{#if loggedIn}}
+                <div class="col-span-2 col-start-2"><a href="/dashboard">Recipe Box</a></div>
+                <button id="logout">Logout</button>
+                {{else}}
+                <div class="col-span-2 col-start-2"><a href="/login">Register</a></div>
+                <div class="col-span-2"><a href="/login">Login</a></div>
+                {{/if}}
+            </div>
+        </header>
+        <main>
+            {{{ body }}}
+        </main>
+        <div class="grid px-52 py-12">
+            <div><img class="justify-self-center mt-6 rounded-lg shadow-xl" src="/images/cooking-together.png"
+                    alt="Cooking Together" /></div>
         </div>
-    </header>
-    <main>
-        {{{ body }}}
-    </main>
-    <div class="grid px-52 py-12">
-        <div><img class="justify-self-center mt-6 rounded-lg shadow-xl" src="/images/cooking-together.png"
-                alt="Cooking Together" /></div>
     </div>
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
