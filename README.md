@@ -3,7 +3,7 @@
   ![NPM](https://img.shields.io/npm/l/glob?style=flat-square)
 
   ## Description
-    This is a blog site for recipies. You can post your recipies including the title, ingrediants, and directions. You can also view other people's recipies. There is an option to vote or comment on other recipies if you want.
+   This is a blog site for recipies. You can post your recipies including the title, ingrediants, and directions. You can also view other people's recipies. There is an option to vote or comment on other recipies if you want.
 
   ## Table of Contents
   * [Usage](#usage)
