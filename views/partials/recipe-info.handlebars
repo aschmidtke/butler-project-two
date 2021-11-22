@@ -1,0 +1,16 @@
+<div class="container mx-auto border-4 rounded-lg border-double border-green-800 px-8">
+  <div class="p-4">
+    <div class="title py-4 text-xl italic">
+      <a class="link" href="api/recipes/{{id}}">{{title}}</a>
+    </div>
+    <div class="text-left">
+      <a> - {{ingredients}}</a>
+    </div>
+    <div class="text-left">
+      <a> - {{directions}}</a>
+    </div>
+  </div>
+  <div class="text-center">
+    <a href="/api/recipes/{{id}}">{{comment.length}} {{format_plural "comment" comment.length}}</a>
+  </div>
+</div>

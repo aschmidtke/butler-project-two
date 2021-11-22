@@ -1,0 +1,28 @@
+<div class="">
+    <div class="">
+        {{> recipe-info recipe}}
+    </div>
+    <div>
+        <a href="/dashboard/edit/{{recipe.id}}" class="edit-link">Edit recipe</a>
+    </div>
+    <div>
+        <button type="button" class="delete-recipe-btn">Delete recipe</button>
+      </div>
+</div>
+{{#if loggedIn}}
+<form class="">
+    <div>
+        <textarea name="comment-body"></textarea>
+    </div>
+    <div>
+        <button type="submit">add comment</button>
+    </div>
+</form>
+{{/if}}
+{{> comment recipe.comment}}
+</div>
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+<script src="/javascript/delete-recipe.js"></script>
+{{/if}}
