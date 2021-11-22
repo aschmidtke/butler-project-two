@@ -2,13 +2,15 @@ async function newRecipe(event) {
     event.preventDefault();
 
     const title = document.querySelector('input[name="recipe-title"]').value; //check these inputs
-    const recipe_url = document.querySelector('input[name="recipe_url"]').value; //check these inputs
+    const ingredients = document.querySelector('input[name="recipe-ingredients"]').value; //check these inputs
+    const directions = document.querySelector('input[name="recipe-directions"]').value;
 
     const response = await fetch(`/api/recipes`, {
         method: 'POST',
         body: JSON.stringify({
             title,
-            recipe_url
+            ingredients,
+            directions
         }),
         headers: { 'Content-Type': 'application/json' }
     });

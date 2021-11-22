@@ -52,11 +52,17 @@ router.get('/', withAuth, (req, res) => {
             }
         ]
     })
-        .then(recipeData => res.json(recipeData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .then(recipeData => {
+        const recipe = recipeData.map(recipe => recipe.get({ plain: true }));
+        res.render('dashboard', { 
+          recipe,
+          loggedIn: true
+         });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
 });
 
 // finds the recipe by the primary key
@@ -105,11 +111,25 @@ router.get('/edit/:id', withAuth, (req, res) => {
             }
         ]
     })
-        .then(recipeData => res.json(recipeData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .then(recipeData => {
+        if (recipeData) {
+          const recipe = recipeData.get({ plain: true });
+  
+          res.render('edit-recipe', {
+            recipe,
+            loggedIn: true
+          });
+        } else {
+          res.status(404).end();
+        }
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      })
+});
+
+router.get('/new', (req, res) => {
+    res.render('new-recipe');
 });
 
 module.exports = router;

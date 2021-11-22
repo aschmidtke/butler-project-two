@@ -103,24 +103,28 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-        .then(recipeData => {
-            if (!recipeData) {
-                res.status(404).json({ meesage: 'No recipe found with this id' });
-                return;
-            }
-            res.json(recipeData)
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
+    .then(recipeData => {
+        if (!recipeData) {
+          res.status(404).json({ message: 'No recipe found with this id' });
+          return;
+        }
+        const recipe = recipeData.get({ plain: true });
+        res.render('single-recipe', { 
+          recipe,
+          loggedIn: req.session.loggedIn 
         });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
 });
 
 router.post('/', withAuth, (req, res) => {
     Recipe.create({
         title: req.body.title,
-        ingredients: req.body.ingrediants,
-        directions: req.body.instructions,
+        ingredients: req.body.ingredients,
+        directions: req.body.directions,
         user_id: req.session.user_id
     })
         .then(recipeData => res.json(recipeData))
@@ -146,10 +150,10 @@ router.put('/:id', withAuth, (req, res) => {
             title: req.body.title
         },
         {
-            ingredients: req.body.ingrediants
+            ingredients: req.body.ingredients
         },
         {
-            directions: req.body.instructions
+            directions: req.body.directions
         },
         {
             where: {

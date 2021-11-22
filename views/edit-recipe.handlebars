@@ -1,0 +1,29 @@
+<div class="">
+    <div class="">
+        <h2>
+            Edit Recipe
+        </h2>
+        <form class="edit-recipe-form">
+            <div>
+                <input class="" name="recipe-title" type="text" value="{{recipe.title}}" />
+            </div>
+            <div>
+                <input class="" name="recipe-ingreditents" type="text" value="{{recipe.ingredients}}" />
+            </div>
+            <div>
+                <input class="" name="recipe-directions" type="text" value="{{recipe.directions}}" />
+            </div>
+            <div class="">
+                <div>
+                    <button type="submit">Save Recipe</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+{{> comment recipe.comment}}
+
+<script src="/javascript/edit-recipe.js"></script>
+<script src="/javascript/comment.js"></script>
