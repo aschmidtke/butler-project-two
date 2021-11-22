@@ -1,5 +1,5 @@
 async function logout() {
-    const reponse = await fetch('/api/users/logout', { // dbl check routes
+    const response = await fetch('/api/users/logout', { // dbl check routes
         method: 'post',
         headers: { 'Content-Type': 'application/json' }
     });

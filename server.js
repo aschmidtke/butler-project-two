@@ -27,16 +27,10 @@ const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-// added this for images?
-app.get('/static', (req, res) => {
-    res.render('static');
-});
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-// this too?
-app.use(express.static('img'));
+
 
 app.use(require('./controllers'));
 

@@ -1,19 +1,16 @@
-<article class="recipe">
-  <div class="">
-    <div class="title">
-      <a class="link" href="/recipe/{{id}}">{{title}}</a>
+<div class="container mx-auto border-4 rounded-lg border-double border-green-800 px-8">
+  <div class="p-4">
+    <div class="title py-4 text-xl italic">
+      <a class="link" href="api/recipes/{{id}}">{{title}}</a>
     </div>
-    <div class="">
-      <a>{{ingredients}}</a>
+    <div class="text-left">
+      <a> - {{ingredients}}</a>
     </div>
-    <div class="">
-      <a>{{directions}}</a>
-    </div>
-    <div class="meta">
-      <div>
-            {{user.username}} on {{format_date created_at}}
-        </div>
-      <a href="/recipe/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+    <div class="text-left">
+      <a> - {{directions}}</a>
     </div>
   </div>
-</article>
+  <div class="text-center">
+    <a href="/api/recipes/{{id}}">{{comment.length}} {{format_plural "comment" comment.length}}</a>
+  </div>
+</div>
