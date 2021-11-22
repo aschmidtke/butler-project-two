@@ -1,6 +1,11 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  purge: [
+      './Project_2/**/*.html',
+      './Project_2/**/*.vue',
+      './Project_2/**/*.jsx',
+  ],
+  enabled: true,
+  css: ['./build/tailwind.css'],
   theme: {
     extend: {},
   },
@@ -9,3 +14,5 @@ module.exports = {
   },
   plugins: [],
 }
+
+
